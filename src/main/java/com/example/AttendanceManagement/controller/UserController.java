@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class UserController {
@@ -24,6 +25,15 @@ public class UserController {
     public Users postEmpData(@RequestBody Users user){
         return userRepository.save(user);
     }
+    @PostMapping("/user-login")
+    public Boolean getEmailAndPwd(@RequestBody UserDTO dto){
+        String email=dto.getEmail();
+        String pwd= dto.getPwd();
+        Users user = userRepository.findByEmailAndPwd(email,pwd);
+        return user != null;
+    }
+}
+
     @PostMapping("/user-login")
     public Boolean getEmailAndPwd(@RequestBody UserDTO dto){
         String email=dto.getEmail();
