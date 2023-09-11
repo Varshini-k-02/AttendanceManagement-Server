@@ -65,17 +65,11 @@ public List<EmployeeAttendance> getAttendance() {
     }
     @PostMapping("/attendance-by-range")
     public List<EmployeeAttendance> getAttendanceByDateRange(@RequestBody RangeDTO dto){
+        Long id=dto.getId();
         Date d1=dto.getStartDate();
         Date d2=dto.getEndDate();
-        return employeeAttendanceRepository.findByLoggedInDateBetween(d1,d2);
+        return employeeAttendanceRepository.findByEmpIdAndLoggedInDateBetween(id,d1,d2);
     }
-//    @PutMapping("/update-emp")
-//    public List<EmployeeAttendance> updateEmpAttendance(@RequestBody JoinDTO dto){
-//        Long id=dto.getId();
-//        Date logDate =dto.getLoggedInDate();
-//
-//
-//
-//    }
+
 
 }
