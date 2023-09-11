@@ -9,5 +9,6 @@ public interface EmployeeAttendanceRepository extends JpaRepository<EmployeeAtte
     List<EmployeeAttendance> findByEmpId(Long empId);
     List<EmployeeAttendance> findByLoggedInDate(Date d);
     List<EmployeeAttendance> findByEmpIdAndLoggedInDate(Long id,Date d);
-    List<EmployeeAttendance> findByLoggedInDateBetween(Date d1, Date d2);
+    List<EmployeeAttendance> findByEmpIdAndLoggedInDateBetween(Long id, Date d1, Date d2);
 }
+
